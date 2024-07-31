@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                background-color: #f0f0f0;
+            }
+            h1 {
+                text-align: center;
+                font-family: sans-serif;
+            }
+            button {
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+            button img {
+                width: 150px;
+                height: auto;
+            }
+            #iframe-container {
+                width: 1920px;
+                height: 1080px;
+            }
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id = "app_use">Use an app:</h1>
+        <img id="crystalseeker" src="Screenshot 2024-07-21 at 2.56.10 PM.png" alt="crystalseeker" height =  "250" width = "250">
+       
+        <img src="appel.png" alt="appel" height = "250" width= "250" id =  "appel">
+           
+        <img src="eggdash.png" alt="eggdash" height = "250" width= "250" id =  "eggdash">
+
+        <img src="mello.png" alt="mello" height = "250" width= "250" id =  "mello">
+
+        <img src="mello2.png" alt="mello2" height = "250" width= "250" id =  "mello2">
+        <img src="ninja.png" alt="ninja5" height = "250" width= "250" id =  "ninja5">
+
+        <main id="iframe-container"></main>
+        <script>
+            function question() {
+                let answer = window.prompt("Rate this from a scale from 1 - 100");
+                return answer;
+            }
+
+            function appObject(name,version,src,id) {
+                this.name = name;
+                this.version = version;
+                this.src = src;
+                this.id = id;
+            }
+            function buttonClick(app){
+                document.getElementById(app.id).addEventListener('click', function() {
+                    this.style.visibility = 'hidden';
+                    const iframe = document.createElement('iframe');
+                    iframe.src = app.src;
+                    iframe.allowTransparency = "true";
+                    iframe.width = "1920";
+                    iframe.height = "1080";
+                    iframe.frameBorder = "0";
+                    iframe.scrolling = "no";
+                    iframe.allowFullscreen = true;
+                    document.getElementById("app_use").style.visibility = 'hidden';
+                    document.getElementById('iframe-container').appendChild(iframe);
+                });
+                
+            }
+            crystalSeeker = new appObject("Crystal Seeker","1.8.3","https://scratch.mit.edu/projects/463553665/embed","crystalseeker");
+            buttonClick(crystalSeeker);
+            appel = new appObject("Appel","1.4","https://scratch.mit.edu/projects/60917032/embed","appel");
+            buttonClick(appel);
+            eggdash = new appObject("Egg Dash","2.0","https://scratch.mit.edu/projects/860151753/embed","eggdash");
+            buttonClick(eggdash);
+            mello = new appObject("Mello","1.0","https://scratch.mit.edu/projects/569231982/embed","mello");
+            buttonClick(mello);
+            mello2 = new appObject("Mello 2","1.0","https://scratch.mit.edu/projects/887172546/embed","mello2");
+            buttonClick(mello2)
+            ninja5 = new appObject("Ninja 5","1.0","https://scratch.mit.edu/projects/211625762/embed","ninja5");
+            buttonClick(ninja5)
+ 
+
+            const apps = [1, 2, 3, 4,];
+
+            
+        </script>
+    </body>
+</html>
